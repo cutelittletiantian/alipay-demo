@@ -1,0 +1,34 @@
+spring:
+  freemarker:
+    suffix: .html
+  profiles:
+    active: pwd2,dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    locale: zh_CN
+    # 解决json返回过程中long的精度丢失问题
+    generator:
+      write-numbers-as-strings: true
+      write-bigdecimal-as-plain: true
+    servlet:
+      content-type: text/html
+      multipart:
+        max-file-size: 2MB
+        max-request-size: 2MB
+    mvc:
+      servlet:
+        load-on-startup: 1 #SpringBoot的接口第一次访问都很慢，通过日志可以发现，dispatcherServlet不是一开始就加载的，有访问才开始加载的，即懒加载。
+    main:
+      allow-bean-definition-overriding: true
+
+
+# 日志管理
+logging:
+  level:
+    root: info
+
+# mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.kuangstudy.ksdalipay.entity

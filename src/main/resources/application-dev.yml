@@ -1,0 +1,42 @@
+server:
+  port: 8989
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/kuangstudy-db?serverTimezone=GMT%2b8&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: mkxiaoer
+    hikari:
+      connection-timeout: 60000
+      validation-timeout: 3000
+      idle-timeout: 60000
+      login-timeout: 5
+      max-lifetime: 60000
+      maximum-pool-size: 400
+      minimum-idle: 100
+      read-only: false
+
+# 支付宝支付参数配置
+alipay:
+  # 应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
+  app_id: ENC(OJnj7081n472vFCwixWH+FhyKkgzy31j)
+  # 商户私钥，您的PKCS8格式RSA2私钥
+  merchant_private_key: xxxxxx
+  # 支付宝公钥
+  alipay_public_key: xxxxx
+  # 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+  notify_url: xxxx
+  # 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+  # return_url: https://api.itbooking.net/admin/alipay/returnUrl
+  return_url: xxxxx
+  # 签名方式
+  sign_type: RSA2
+  # 字符编码格式
+  charset: utf-8
+  # 支付宝网关
+  gatewayUrl: https://openapi.alipay.com/gateway.do
+  # 保存支付日志的地址
+  log_path: c:/tmp/
+
